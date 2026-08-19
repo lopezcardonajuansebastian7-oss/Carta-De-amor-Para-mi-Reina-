@@ -1,0 +1,697 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #000;
+    color: white;
+
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =================================
+   PANTALLAS
+================================= */
+
+.pantalla {
+    position: fixed;
+
+    width: 100%;
+    height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+
+#inicio {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(100, 0, 30, 0.45),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at top,
+            rgba(30, 0, 60, 0.3),
+            transparent 55%
+        ),
+
+        #000;
+}
+
+
+.oculto {
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: scale(1.2);
+}
+
+
+/* =================================
+   ESTRELLAS DEL FONDO
+================================= */
+
+#inicio::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        5vw 10vh white,
+        15vw 20vh white,
+        25vw 8vh white,
+        35vw 30vh white,
+        45vw 15vh white,
+        55vw 25vh white,
+        65vw 8vh white,
+        75vw 20vh white,
+        85vw 12vh white,
+        95vw 28vh white,
+
+        10vw 45vh white,
+        22vw 55vh white,
+        80vw 48vh white,
+        90vw 65vh white,
+
+        5vw 80vh white,
+        18vw 90vh white,
+        35vw 82vh white,
+        70vw 88vh white,
+        88vw 78vh white;
+
+    animation: estrellas 3s infinite alternate;
+}
+
+
+@keyframes estrellas {
+
+    from {
+        opacity: .25;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =================================
+   UNIVERSO
+================================= */
+
+.universo {
+
+    position: relative;
+
+    width: min(88vw, 390px);
+    height: min(88vw, 390px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =================================
+   CORAZÓN CENTRAL
+================================= */
+
+.corazon-principal {
+
+    position: relative;
+
+    width: 58vw;
+    height: 58vw;
+
+    max-width: 250px;
+    max-height: 250px;
+
+    transform: rotate(-45deg);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff174f,
+            #b00035 50%,
+            #ff003c
+        );
+
+    border-radius:
+
+        50%
+        50%
+        0
+        50%;
+
+    box-shadow:
+
+        0 0 15px #ff174f,
+        0 0 30px #ff174f,
+        0 0 60px rgba(255, 0, 80, .8),
+        inset 0 0 25px rgba(255,255,255,.25);
+
+    animation:
+
+        latido 1.6s infinite ease-in-out;
+
+    z-index: 5;
+}
+
+
+.corazon-principal::before,
+.corazon-principal::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background: inherit;
+
+    border-radius: 50%;
+}
+
+
+.corazon-principal::before {
+
+    top: -50%;
+    left: 0;
+}
+
+
+.corazon-principal::after {
+
+    left: 50%;
+    top: 0;
+}
+
+
+/* =================================
+   BORDE NEON
+================================= */
+
+.corazon-principal {
+
+    outline: 3px solid rgba(255,255,255,.15);
+}
+
+
+/* =================================
+   BRILLO
+================================= */
+
+.corazon-brillo {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    background: rgba(255, 0, 80, .35);
+
+    filter: blur(30px);
+
+    z-index: -2;
+
+    transform: rotate(45deg);
+
+    animation: brillo 2s infinite alternate;
+}
+
+
+@keyframes brillo {
+
+    from {
+        opacity: .4;
+        transform: rotate(45deg) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(45deg) scale(1.15);
+    }
+}
+
+
+/* =================================
+   TEXTO DENTRO DEL CORAZÓN
+================================= */
+
+.contenido-corazon {
+
+    position: absolute;
+
+    z-index: 20;
+
+    width: 100%;
+
+    transform:
+
+        rotate(45deg)
+        translate(-2%, 5%);
+
+    text-align: center;
+
+    text-shadow:
+
+        0 0 5px #fff,
+        0 0 12px #ffb3c1;
+}
+
+
+.nombre {
+
+    font-size: clamp(17px, 5vw, 25px);
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    animation: textoPalpita 1.6s infinite ease-in-out;
+}
+
+
+.mensaje {
+
+    margin-top: 13px;
+
+    font-size: clamp(13px, 4vw, 18px);
+
+    line-height: 1.45;
+
+    color: #fff5f7;
+
+    animation: textoPalpita 1.6s infinite ease-in-out;
+}
+
+
+@keyframes textoPalpita {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+
+@keyframes latido {
+
+    0%,
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    15% {
+        transform: rotate(-45deg) scale(1.08);
+    }
+
+    30% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    45% {
+        transform: rotate(-45deg) scale(1.05);
+    }
+}
+
+
+/* =================================
+   CORAZONES NEON GIRANDO
+================================= */
+
+.corazones-orbita {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    animation: girar 18s linear infinite;
+
+    z-index: 10;
+}
+
+
+.corazones-orbita span {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 30px;
+    height: 30px;
+
+    margin-left: -15px;
+    margin-top: -15px;
+
+    font-size: 25px;
+
+    filter:
+
+        drop-shadow(0 0 5px currentColor)
+        drop-shadow(0 0 12px currentColor);
+
+    transform:
+
+        rotate(calc(var(--angulo) * 1deg))
+        translateY(-180px);
+
+}
+
+
+/* Posiciones */
+
+.corazones-orbita span:nth-child(1) {
+    transform: rotate(0deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(2) {
+    transform: rotate(30deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(3) {
+    transform: rotate(60deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(4) {
+    transform: rotate(90deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(5) {
+    transform: rotate(120deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(6) {
+    transform: rotate(150deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(7) {
+    transform: rotate(180deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(8) {
+    transform: rotate(210deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(9) {
+    transform: rotate(240deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(10) {
+    transform: rotate(270deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(11) {
+    transform: rotate(300deg) translateY(-180px);
+}
+
+.corazones-orbita span:nth-child(12) {
+    transform: rotate(330deg) translateY(-180px);
+}
+
+
+@keyframes girar {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =================================
+   INDICACIÓN
+================================= */
+
+.indicacion {
+
+    position: absolute;
+
+    bottom: 7vh;
+
+    font-size: 14px;
+
+    color: rgba(255,255,255,.75);
+
+    letter-spacing: 2px;
+
+    animation: aparecer 2s infinite alternate;
+}
+
+
+@keyframes aparecer {
+
+    from {
+        opacity: .3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =================================
+   CARTA
+================================= */
+
+.carta-pantalla {
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(100,0,30,.5),
+            transparent 55%
+        ),
+
+        #020003;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+
+.carta {
+
+    width: min(92vw, 650px);
+
+    max-height: 88dvh;
+
+    overflow-y: auto;
+
+    padding: 30px 23px;
+
+    border-radius: 25px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,0,70,.04)
+        );
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+
+        0 0 25px rgba(255,0,60,.4),
+        inset 0 0 30px rgba(255,255,255,.03);
+
+    text-align: center;
+}
+
+
+.corazon-carta {
+
+    font-size: 45px;
+
+    filter:
+        drop-shadow(0 0 10px red)
+        drop-shadow(0 0 20px red);
+
+    animation: latidoCarta 1.5s infinite;
+}
+
+
+@keyframes latidoCarta {
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+.carta h1 {
+
+    margin-top: 10px;
+
+    font-size: 30px;
+
+    text-shadow:
+        0 0 10px #ff174f,
+        0 0 20px #ff174f;
+}
+
+
+.linea {
+
+    width: 90px;
+    height: 2px;
+
+    margin: 17px auto;
+
+    background: #ff174f;
+
+    box-shadow: 0 0 15px #ff174f;
+}
+
+
+.carta p {
+
+    margin: 17px 0;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    color: #ffe7ed;
+}
+
+
+.especial {
+
+    font-size: 30px !important;
+
+    color: #ff5277 !important;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 10px #ff174f,
+        0 0 25px #ff174f;
+}
+
+
+.estrellas-final {
+
+    font-size: 23px;
+
+    letter-spacing: 5px;
+
+    margin: 20px 0;
+}
+
+
+.firma {
+
+    margin-top: 25px !important;
+
+    font-size: 15px !important;
+
+    color: rgba(255,255,255,.8) !important;
+}
+
+
+/* =================================
+   CELULARES PEQUEÑOS
+================================= */
+
+@media (max-width: 380px) {
+
+    .universo {
+
+        width: 92vw;
+        height: 92vw;
+    }
+
+    .corazon-principal {
+
+        width: 55vw;
+        height: 55vw;
+    }
+
+    .corazones-orbita span {
+
+        font-size: 21px;
+    }
+
+    .carta {
+
+        padding: 25px 18px;
+    }
+
+    .carta p {
+
+        font-size: 15px;
+    }
+}
+
+
+/* =================================
+   PANTALLAS GRANDES
+================================= */
+
+@media (min-width: 700px) {
+
+    .universo {
+
+        width: 430px;
+        height: 430px;
+    }
+
+    .corazones-orbita span {
+
+        transform-origin: center;
+    }
+}
