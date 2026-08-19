@@ -1,697 +1,352 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    background: #000;
-    color: white;
-
-    font-family: Georgia, "Times New Roman", serif;
+body{
+background:#000;
+font-family:Georgia,serif;
+overflow:hidden;
+color:white;
 }
 
-
-/* =================================
-   PANTALLAS
-================================= */
-
-.pantalla {
-    position: fixed;
-
-    width: 100%;
-    height: 100dvh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    overflow: hidden;
-
-    transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
+.pantalla{
+width:100%;
+height:100dvh;
+position:absolute;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:radial-gradient(circle,#18000b,#000 65%);
+transition:1.5s;
 }
 
-
-#inicio {
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            rgba(100, 0, 30, 0.45),
-            transparent 45%
-        ),
-
-        radial-gradient(
-            circle at top,
-            rgba(30, 0, 60, 0.3),
-            transparent 55%
-        ),
-
-        #000;
+.oculto{
+opacity:0;
+transform:scale(1.2);
+pointer-events:none;
 }
 
+/* ESTRELLAS */
 
-.oculto {
-
-    opacity: 0;
-    pointer-events: none;
-
-    transform: scale(1.2);
+.estrellas{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+box-shadow:
+20px 40px white,
+80px 100px white,
+150px 60px white,
+220px 180px white,
+300px 90px white,
+360px 40px white,
+40px 300px white,
+120px 420px white,
+250px 500px white,
+340px 600px white,
+70px 700px white,
+180px 760px white,
+300px 820px white;
+animation:brillar 3s infinite alternate;
 }
 
-
-/* =================================
-   ESTRELLAS DEL FONDO
-================================= */
-
-#inicio::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 2px;
-    height: 2px;
-
-    background: white;
-
-    border-radius: 50%;
-
-    box-shadow:
-
-        5vw 10vh white,
-        15vw 20vh white,
-        25vw 8vh white,
-        35vw 30vh white,
-        45vw 15vh white,
-        55vw 25vh white,
-        65vw 8vh white,
-        75vw 20vh white,
-        85vw 12vh white,
-        95vw 28vh white,
-
-        10vw 45vh white,
-        22vw 55vh white,
-        80vw 48vh white,
-        90vw 65vh white,
-
-        5vw 80vh white,
-        18vw 90vh white,
-        35vw 82vh white,
-        70vw 88vh white,
-        88vw 78vh white;
-
-    animation: estrellas 3s infinite alternate;
+@keyframes brillar{
+from{opacity:.3}
+to{opacity:1}
 }
 
+/* ESCENA */
 
-@keyframes estrellas {
-
-    from {
-        opacity: .25;
-    }
-
-    to {
-        opacity: 1;
-    }
+.escena{
+position:relative;
+width:360px;
+height:360px;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
+/* ORBITA */
 
-/* =================================
-   UNIVERSO
-================================= */
-
-.universo {
-
-    position: relative;
-
-    width: min(88vw, 390px);
-    height: min(88vw, 390px);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.orbita{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:50%;
+animation:girar 14s linear infinite;
 }
 
-
-/* =================================
-   CORAZÓN CENTRAL
-================================= */
-
-.corazon-principal {
-
-    position: relative;
-
-    width: 58vw;
-    height: 58vw;
-
-    max-width: 250px;
-    max-height: 250px;
-
-    transform: rotate(-45deg);
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #ff174f,
-            #b00035 50%,
-            #ff003c
-        );
-
-    border-radius:
-
-        50%
-        50%
-        0
-        50%;
-
-    box-shadow:
-
-        0 0 15px #ff174f,
-        0 0 30px #ff174f,
-        0 0 60px rgba(255, 0, 80, .8),
-        inset 0 0 25px rgba(255,255,255,.25);
-
-    animation:
-
-        latido 1.6s infinite ease-in-out;
-
-    z-index: 5;
+.h{
+position:absolute;
+left:50%;
+top:50%;
+font-size:28px;
+transform-origin:0 0;
+filter:
+drop-shadow(0 0 5px currentColor)
+drop-shadow(0 0 12px currentColor)
+drop-shadow(0 0 22px currentColor);
 }
 
+/* 16 posiciones */
 
-.corazon-principal::before,
-.corazon-principal::after {
+.h:nth-child(1){transform:rotate(0deg) translateY(-175px);}
+.h:nth-child(2){transform:rotate(22.5deg) translateY(-175px);}
+.h:nth-child(3){transform:rotate(45deg) translateY(-175px);}
+.h:nth-child(4){transform:rotate(67.5deg) translateY(-175px);}
+.h:nth-child(5){transform:rotate(90deg) translateY(-175px);}
+.h:nth-child(6){transform:rotate(112.5deg) translateY(-175px);}
+.h:nth-child(7){transform:rotate(135deg) translateY(-175px);}
+.h:nth-child(8){transform:rotate(157.5deg) translateY(-175px);}
+.h:nth-child(9){transform:rotate(180deg) translateY(-175px);}
+.h:nth-child(10){transform:rotate(202.5deg) translateY(-175px);}
+.h:nth-child(11){transform:rotate(225deg) translateY(-175px);}
+.h:nth-child(12){transform:rotate(247.5deg) translateY(-175px);}
+.h:nth-child(13){transform:rotate(270deg) translateY(-175px);}
+.h:nth-child(14){transform:rotate(292.5deg) translateY(-175px);}
+.h:nth-child(15){transform:rotate(315deg) translateY(-175px);}
+.h:nth-child(16){transform:rotate(337.5deg) translateY(-175px);}
 
-    content: "";
+.c1{color:#ff174f}
+.c2{color:#00e5ff}
+.c3{color:#d500f9}
+.c4{color:#00ff6a}
+.c5{color:#ffff00}
+.c6{color:#ff9100}
+.c7{color:#ff4081}
+.c8{color:#18ffff}
+.c9{color:#e040fb}
+.c10{color:#69f0ae}
+.c11{color:#ffd740}
+.c12{color:#ff5252}
+.c13{color:#40c4ff}
+.c14{color:#ea80fc}
+.c15{color:#64ffda}
+.c16{color:#ff80ab}
 
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    background: inherit;
-
-    border-radius: 50%;
+@keyframes girar{
+100%{transform:rotate(360deg)}
 }
 
+/* CORAZON */
 
-.corazon-principal::before {
-
-    top: -50%;
-    left: 0;
+.corazon{
+position:relative;
+width:210px;
+height:210px;
+background:linear-gradient(135deg,#ff174f,#9b0036);
+transform:rotate(-45deg);
+border-radius:50% 50% 0 50%;
+box-shadow:
+0 0 20px #ff174f,
+0 0 45px #ff174f,
+0 0 90px rgba(255,0,70,.8);
+animation:latido 1.6s infinite;
+z-index:5;
 }
 
-
-.corazon-principal::after {
-
-    left: 50%;
-    top: 0;
+.corazon:before,
+.corazon:after{
+content:"";
+position:absolute;
+width:210px;
+height:210px;
+background:inherit;
+border-radius:50%;
 }
 
-
-/* =================================
-   BORDE NEON
-================================= */
-
-.corazon-principal {
-
-    outline: 3px solid rgba(255,255,255,.15);
+.corazon:before{
+top:-105px;
+left:0;
 }
 
-
-/* =================================
-   BRILLO
-================================= */
-
-.corazon-brillo {
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    border-radius: 50%;
-
-    background: rgba(255, 0, 80, .35);
-
-    filter: blur(30px);
-
-    z-index: -2;
-
-    transform: rotate(45deg);
-
-    animation: brillo 2s infinite alternate;
+.corazon:after{
+left:105px;
+top:0;
 }
 
-
-@keyframes brillo {
-
-    from {
-        opacity: .4;
-        transform: rotate(45deg) scale(.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: rotate(45deg) scale(1.15);
-    }
+@keyframes latido{
+0%,100%{
+transform:rotate(-45deg) scale(1);
+}
+50%{
+transform:rotate(-45deg) scale(1.08);
+}
 }
 
+/* TEXTO */
 
-/* =================================
-   TEXTO DENTRO DEL CORAZÓN
-================================= */
-
-.contenido-corazon {
-
-    position: absolute;
-
-    z-index: 20;
-
-    width: 100%;
-
-    transform:
-
-        rotate(45deg)
-        translate(-2%, 5%);
-
-    text-align: center;
-
-    text-shadow:
-
-        0 0 5px #fff,
-        0 0 12px #ffb3c1;
+.texto{
+position:absolute;
+width:250px;
+left:-20px;
+top:35px;
+text-align:center;
+transform:rotate(45deg);
+z-index:20;
+text-shadow:
+0 0 6px white,
+0 0 15px #ff80ab;
+animation:textop 1.6s infinite;
 }
 
-
-.nombre {
-
-    font-size: clamp(17px, 5vw, 25px);
-
-    font-weight: bold;
-
-    white-space: nowrap;
-
-    animation: textoPalpita 1.6s infinite ease-in-out;
+.texto h1{
+font-size:22px;
+line-height:1.2;
 }
 
-
-.mensaje {
-
-    margin-top: 13px;
-
-    font-size: clamp(13px, 4vw, 18px);
-
-    line-height: 1.45;
-
-    color: #fff5f7;
-
-    animation: textoPalpita 1.6s infinite ease-in-out;
+.texto p{
+margin-top:12px;
+font-size:16px;
+line-height:1.5;
 }
 
-
-@keyframes textoPalpita {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.06);
-    }
+.diamante{
+font-size:24px;
+margin-top:8px;
 }
 
-
-@keyframes latido {
-
-    0%,
-    100% {
-        transform: rotate(-45deg) scale(1);
-    }
-
-    15% {
-        transform: rotate(-45deg) scale(1.08);
-    }
-
-    30% {
-        transform: rotate(-45deg) scale(1);
-    }
-
-    45% {
-        transform: rotate(-45deg) scale(1.05);
-    }
+@keyframes textop{
+50%{transform:rotate(45deg) scale(1.06)}
 }
 
+/* MENSAJE */
 
-/* =================================
-   CORAZONES NEON GIRANDO
-================================= */
-
-.corazones-orbita {
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    animation: girar 18s linear infinite;
-
-    z-index: 10;
+.tocar{
+position:absolute;
+bottom:55px;
+font-size:15px;
+letter-spacing:2px;
+animation:aparecer 2s infinite alternate;
 }
 
-
-.corazones-orbita span {
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 30px;
-    height: 30px;
-
-    margin-left: -15px;
-    margin-top: -15px;
-
-    font-size: 25px;
-
-    filter:
-
-        drop-shadow(0 0 5px currentColor)
-        drop-shadow(0 0 12px currentColor);
-
-    transform:
-
-        rotate(calc(var(--angulo) * 1deg))
-        translateY(-180px);
-
+@keyframes aparecer{
+from{opacity:.3}
+to{opacity:1}
 }
 
+/* CARTA */
 
-/* Posiciones */
-
-.corazones-orbita span:nth-child(1) {
-    transform: rotate(0deg) translateY(-180px);
+.carta{
+width:90%;
+max-width:500px;
+padding:28px 22px;
+border-radius:25px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 0 30px #ff174f;
+text-align:center;
+max-height:88dvh;
+overflow:auto;
 }
 
-.corazones-orbita span:nth-child(2) {
-    transform: rotate(30deg) translateY(-180px);
+.mini{
+font-size:45px;
+animation:latmini 1.5s infinite;
 }
 
-.corazones-orbita span:nth-child(3) {
-    transform: rotate(60deg) translateY(-180px);
+@keyframes latmini{
+50%{transform:scale(1.2)}
 }
 
-.corazones-orbita span:nth-child(4) {
-    transform: rotate(90deg) translateY(-180px);
+.carta h2{
+font-size:30px;
+margin:10px;
+color:#fff;
+text-shadow:0 0 15px #ff174f;
 }
 
-.corazones-orbita span:nth-child(5) {
-    transform: rotate(120deg) translateY(-180px);
+.linea{
+width:90px;
+height:2px;
+margin:15px auto;
+background:#ff174f;
+box-shadow:0 0 10px #ff174f;
 }
 
-.corazones-orbita span:nth-child(6) {
-    transform: rotate(150deg) translateY(-180px);
+.carta p{
+font-size:17px;
+line-height:1.7;
+margin:18px 0;
+color:#ffeaf0;
 }
 
-.corazones-orbita span:nth-child(7) {
-    transform: rotate(180deg) translateY(-180px);
+.final{
+font-size:22px!important;
+font-weight:bold;
+color:#ff8fab!important;
+text-shadow:0 0 12px #ff174f;
 }
 
-.corazones-orbita span:nth-child(8) {
-    transform: rotate(210deg) translateY(-180px);
+.firma{
+margin-top:25px;
+color:#ffd9e2;
+line-height:1.6;
 }
 
-.corazones-orbita span:nth-child(9) {
-    transform: rotate(240deg) translateY(-180px);
+/* CELULAR */
+
+@media(max-width:420px){
+
+.escena{
+width:330px;
+height:330px;
 }
 
-.corazones-orbita span:nth-child(10) {
-    transform: rotate(270deg) translateY(-180px);
+.corazon{
+width:185px;
+height:185px;
 }
 
-.corazones-orbita span:nth-child(11) {
-    transform: rotate(300deg) translateY(-180px);
+.corazon:before,
+.corazon:after{
+width:185px;
+height:185px;
 }
 
-.corazones-orbita span:nth-child(12) {
-    transform: rotate(330deg) translateY(-180px);
+.corazon:before{
+top:-92px;
 }
 
-
-@keyframes girar {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+.corazon:after{
+left:92px;
 }
 
-
-/* =================================
-   INDICACIÓN
-================================= */
-
-.indicacion {
-
-    position: absolute;
-
-    bottom: 7vh;
-
-    font-size: 14px;
-
-    color: rgba(255,255,255,.75);
-
-    letter-spacing: 2px;
-
-    animation: aparecer 2s infinite alternate;
+.h{
+font-size:24px;
 }
 
-
-@keyframes aparecer {
-
-    from {
-        opacity: .3;
-    }
-
-    to {
-        opacity: 1;
-    }
+.h:nth-child(n){
 }
 
+.h:nth-child(1){transform:rotate(0deg) translateY(-158px);}
+.h:nth-child(2){transform:rotate(22.5deg) translateY(-158px);}
+.h:nth-child(3){transform:rotate(45deg) translateY(-158px);}
+.h:nth-child(4){transform:rotate(67.5deg) translateY(-158px);}
+.h:nth-child(5){transform:rotate(90deg) translateY(-158px);}
+.h:nth-child(6){transform:rotate(112.5deg) translateY(-158px);}
+.h:nth-child(7){transform:rotate(135deg) translateY(-158px);}
+.h:nth-child(8){transform:rotate(157.5deg) translateY(-158px);}
+.h:nth-child(9){transform:rotate(180deg) translateY(-158px);}
+.h:nth-child(10){transform:rotate(202.5deg) translateY(-158px);}
+.h:nth-child(11){transform:rotate(225deg) translateY(-158px);}
+.h:nth-child(12){transform:rotate(247.5deg) translateY(-158px);}
+.h:nth-child(13){transform:rotate(270deg) translateY(-158px);}
+.h:nth-child(14){transform:rotate(292.5deg) translateY(-158px);}
+.h:nth-child(15){transform:rotate(315deg) translateY(-158px);}
+.h:nth-child(16){transform:rotate(337.5deg) translateY(-158px);}
 
-/* =================================
-   CARTA
-================================= */
-
-.carta-pantalla {
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(100,0,30,.5),
-            transparent 55%
-        ),
-
-        #020003;
-
-    padding: 20px;
-
-    overflow-y: auto;
+.texto h1{
+font-size:18px;
 }
 
-
-.carta {
-
-    width: min(92vw, 650px);
-
-    max-height: 88dvh;
-
-    overflow-y: auto;
-
-    padding: 30px 23px;
-
-    border-radius: 25px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.08),
-            rgba(255,0,70,.04)
-        );
-
-    border: 1px solid rgba(255,255,255,.18);
-
-    backdrop-filter: blur(15px);
-
-    box-shadow:
-
-        0 0 25px rgba(255,0,60,.4),
-        inset 0 0 30px rgba(255,255,255,.03);
-
-    text-align: center;
+.texto p{
+font-size:14px;
 }
 
-
-.corazon-carta {
-
-    font-size: 45px;
-
-    filter:
-        drop-shadow(0 0 10px red)
-        drop-shadow(0 0 20px red);
-
-    animation: latidoCarta 1.5s infinite;
-}
-
-
-@keyframes latidoCarta {
-
-    50% {
-        transform: scale(1.15);
-    }
-}
-
-
-.carta h1 {
-
-    margin-top: 10px;
-
-    font-size: 30px;
-
-    text-shadow:
-        0 0 10px #ff174f,
-        0 0 20px #ff174f;
-}
-
-
-.linea {
-
-    width: 90px;
-    height: 2px;
-
-    margin: 17px auto;
-
-    background: #ff174f;
-
-    box-shadow: 0 0 15px #ff174f;
-}
-
-
-.carta p {
-
-    margin: 17px 0;
-
-    font-size: 17px;
-
-    line-height: 1.65;
-
-    color: #ffe7ed;
-}
-
-
-.especial {
-
-    font-size: 30px !important;
-
-    color: #ff5277 !important;
-
-    font-weight: bold;
-
-    text-shadow:
-        0 0 10px #ff174f,
-        0 0 25px #ff174f;
-}
-
-
-.estrellas-final {
-
-    font-size: 23px;
-
-    letter-spacing: 5px;
-
-    margin: 20px 0;
-}
-
-
-.firma {
-
-    margin-top: 25px !important;
-
-    font-size: 15px !important;
-
-    color: rgba(255,255,255,.8) !important;
-}
-
-
-/* =================================
-   CELULARES PEQUEÑOS
-================================= */
-
-@media (max-width: 380px) {
-
-    .universo {
-
-        width: 92vw;
-        height: 92vw;
-    }
-
-    .corazon-principal {
-
-        width: 55vw;
-        height: 55vw;
-    }
-
-    .corazones-orbita span {
-
-        font-size: 21px;
-    }
-
-    .carta {
-
-        padding: 25px 18px;
-    }
-
-    .carta p {
-
-        font-size: 15px;
-    }
-}
-
-
-/* =================================
-   PANTALLAS GRANDES
-================================= */
-
-@media (min-width: 700px) {
-
-    .universo {
-
-        width: 430px;
-        height: 430px;
-    }
-
-    .corazones-orbita span {
-
-        transform-origin: center;
-    }
 }
