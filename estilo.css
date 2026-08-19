@@ -4,42 +4,34 @@
     box-sizing: border-box;
 }
 
-
 html,
 body {
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     background: #000;
-
     color: white;
+    font-family: Georgia, "Times New Roman", serif;
+}
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+body {
+    background: #000;
 }
 
 
-/* =====================================
+/* ===============================
    PANTALLAS
-===================================== */
+================================ */
 
 .pantalla {
-
     position: absolute;
 
     width: 100%;
     height: 100dvh;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     flex-direction: column;
 
     overflow: hidden;
@@ -47,45 +39,37 @@ body {
     background:
         radial-gradient(
             circle at center,
-            #24000e 0%,
-            #080006 45%,
-            #000 80%
+            #26000f 0%,
+            #0b0006 45%,
+            #000000 80%
         );
 
     transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
+        opacity 1.3s ease,
+        transform 1.3s ease;
 }
 
-
 .oculto {
-
     opacity: 0;
-
     transform: scale(1.2);
-
     pointer-events: none;
 }
 
 
-
-/* =====================================
+/* ===============================
    ESTRELLAS
-===================================== */
+================================ */
 
 .estrellas {
-
     position: absolute;
 
     width: 3px;
     height: 3px;
 
     background: white;
-
     border-radius: 50%;
 
     box-shadow:
-
         5vw 10vh white,
         15vw 20vh white,
         25vw 8vh white,
@@ -96,12 +80,10 @@ body {
         75vw 20vh white,
         85vw 12vh white,
         95vw 28vh white,
-
         10vw 45vh white,
         22vw 55vh white,
         80vw 48vh white,
         90vw 65vh white,
-
         5vw 80vh white,
         18vw 90vh white,
         35vw 82vh white,
@@ -112,11 +94,9 @@ body {
         estrellas 3s infinite alternate;
 }
 
-
 @keyframes estrellas {
-
     from {
-        opacity: .25;
+        opacity: .2;
     }
 
     to {
@@ -125,34 +105,27 @@ body {
 }
 
 
-
-/* =====================================
+/* ===============================
    ESCENA
-===================================== */
+================================ */
 
 .escena {
-
     position: relative;
 
     width: min(90vw, 390px);
-
     height: min(90vw, 390px);
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
 
-
-/* =====================================
-   ÓRBITA DE CORAZONES
-===================================== */
+/* ===============================
+   ORBITA
+================================ */
 
 .orbita {
-
     position: absolute;
 
     width: 100%;
@@ -168,7 +141,6 @@ body {
 
 
 .h {
-
     position: absolute;
 
     left: 50%;
@@ -181,19 +153,18 @@ body {
     transform-origin: 0 0;
 
     filter:
-
-        drop-shadow(0 0 4px currentColor)
-        drop-shadow(0 0 10px currentColor)
-        drop-shadow(0 0 20px currentColor);
+        drop-shadow(0 0 5px currentColor)
+        drop-shadow(0 0 12px currentColor)
+        drop-shadow(0 0 25px currentColor);
 
     animation:
-        brilloCorazon 1.5s infinite alternate;
+        brillo 1.4s infinite alternate;
 }
 
 
-/* =====================================
-   POSICIONES DE LOS CORAZONES
-===================================== */
+/* ===============================
+   POSICIONES
+================================ */
 
 .h:nth-child(1) {
     transform: rotate(0deg) translateY(-180px);
@@ -260,10 +231,9 @@ body {
 }
 
 
-
-/* =====================================
+/* ===============================
    COLORES NEÓN
-===================================== */
+================================ */
 
 .c1 {
     color: #ff174f;
@@ -331,7 +301,6 @@ body {
 
 
 @keyframes girar {
-
     from {
         transform: rotate(0deg);
     }
@@ -341,11 +310,9 @@ body {
     }
 }
 
-
-@keyframes brilloCorazon {
-
+@keyframes brillo {
     from {
-        opacity: .65;
+        opacity: .5;
     }
 
     to {
@@ -354,13 +321,11 @@ body {
 }
 
 
-
-/* =====================================
+/* ===============================
    CORAZÓN CENTRAL
-===================================== */
+================================ */
 
 .corazon {
-
     position: relative;
 
     width: 210px;
@@ -383,7 +348,6 @@ body {
         50%;
 
     box-shadow:
-
         0 0 15px #ff174f,
         0 0 35px #ff174f,
         0 0 65px rgba(255, 0, 70, .8),
@@ -393,12 +357,13 @@ body {
         latido 1.6s infinite;
 
     z-index: 20;
+
+    cursor: pointer;
 }
 
 
 .corazon::before,
 .corazon::after {
-
     content: "";
 
     position: absolute;
@@ -413,17 +378,13 @@ body {
 
 
 .corazon::before {
-
     top: -105px;
-
     left: 0;
 }
 
 
 .corazon::after {
-
     left: 105px;
-
     top: 0;
 }
 
@@ -445,26 +406,24 @@ body {
 }
 
 
-
-/* =====================================
-   TEXTO DENTRO DEL CORAZÓN
-===================================== */
+/* ===============================
+   TEXTO DEL CORAZÓN
+================================ */
 
 .texto {
-
     position: absolute;
 
     width: 190px;
 
     left: 10px;
-
     top: 70px;
 
     text-align: center;
 
     /*
-       COMPENSA LA ROTACIÓN DEL CORAZÓN
-       PARA QUE EL TEXTO QUEDE RECTO
+       El corazón está inclinado -45°.
+       El texto se gira +45° para
+       quedar completamente derecho.
     */
 
     transform: rotate(45deg);
@@ -474,7 +433,6 @@ body {
     color: white;
 
     text-shadow:
-
         0 0 5px white,
         0 0 10px #ff80ab,
         0 0 20px #ff174f;
@@ -485,11 +443,6 @@ body {
 
 
 .texto h1 {
-
-    font-family:
-        Georgia,
-        serif;
-
     font-size: 20px;
 
     line-height: 1.2;
@@ -499,7 +452,6 @@ body {
 
 
 .texto p {
-
     margin-top: 10px;
 
     font-size: 14px;
@@ -509,7 +461,6 @@ body {
 
 
 .diamante {
-
     margin-top: 7px;
 
     font-size: 22px;
@@ -533,13 +484,11 @@ body {
 }
 
 
-
-/* =====================================
+/* ===============================
    MENSAJE
-===================================== */
+================================ */
 
 .tocar {
-
     position: absolute;
 
     bottom: 55px;
@@ -548,8 +497,7 @@ body {
 
     letter-spacing: 2px;
 
-    color:
-        rgba(255,255,255,.8);
+    color: rgba(255,255,255,.8);
 
     animation:
         aparecer 2s infinite alternate;
@@ -568,21 +516,17 @@ body {
 }
 
 
-
-/* =====================================
+/* ===============================
    CARTA
-===================================== */
+================================ */
 
 #carta {
-
     background:
-
         radial-gradient(
             circle,
             rgba(100,0,30,.5),
             transparent 55%
         ),
-
         #020003;
 
     padding: 20px;
@@ -592,7 +536,6 @@ body {
 
 
 .carta {
-
     width: 90%;
 
     max-width: 550px;
@@ -606,7 +549,6 @@ body {
     border-radius: 25px;
 
     background:
-
         linear-gradient(
             145deg,
             rgba(255,255,255,.08),
@@ -621,19 +563,14 @@ body {
         blur(15px);
 
     box-shadow:
-
-        0 0 30px
-        rgba(255,0,60,.5),
-
-        inset 0 0 30px
-        rgba(255,255,255,.03);
+        0 0 30px rgba(255,0,60,.5),
+        inset 0 0 30px rgba(255,255,255,.03);
 
     text-align: center;
 }
 
 
 .mini {
-
     font-size: 45px;
 
     animation:
@@ -650,7 +587,6 @@ body {
 
 
 .carta h2 {
-
     margin-top: 10px;
 
     font-size: 30px;
@@ -664,7 +600,6 @@ body {
 
 
 .linea {
-
     width: 90px;
 
     height: 2px;
@@ -679,7 +614,6 @@ body {
 
 
 .carta p {
-
     margin: 18px 0;
 
     font-size: 17px;
@@ -691,7 +625,6 @@ body {
 
 
 .final {
-
     font-size: 22px !important;
 
     font-weight: bold;
@@ -705,7 +638,6 @@ body {
 
 
 .estrellas-final {
-
     margin: 20px 0;
 
     font-size: 23px;
@@ -715,7 +647,6 @@ body {
 
 
 .firma {
-
     margin-top: 25px;
 
     color: #ffd9e2;
@@ -724,52 +655,42 @@ body {
 }
 
 
-
-/* =====================================
+/* ===============================
    CELULARES
-===================================== */
+================================ */
 
 @media (max-width: 420px) {
 
     .escena {
-
         width: 330px;
-
         height: 330px;
     }
 
 
     .corazon {
-
         width: 185px;
-
         height: 185px;
     }
 
 
     .corazon::before,
     .corazon::after {
-
         width: 185px;
-
         height: 185px;
     }
 
 
     .corazon::before {
-
         top: -92px;
     }
 
 
     .corazon::after {
-
         left: 92px;
     }
 
 
     .h {
-
         font-size: 24px;
     }
 
@@ -840,37 +761,41 @@ body {
 
 
     .texto {
-
         width: 170px;
 
         left: 7px;
-
         top: 62px;
     }
 
 
     .texto h1 {
-
         font-size: 17px;
     }
 
 
     .texto p {
-
         font-size: 13px;
     }
 
 
     .diamante {
-
         font-size: 20px;
     }
 
 
     .tocar {
-
         bottom: 45px;
 
         font-size: 13px;
+    }
+
+
+    .carta {
+        padding: 25px 18px;
+    }
+
+
+    .carta p {
+        font-size: 16px;
     }
 }
