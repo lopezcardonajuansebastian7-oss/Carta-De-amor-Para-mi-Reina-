@@ -1,108 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Con mucho amor ❤️</title>
-  <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
+const inicio = document.getElementById("inicio");
+const carta = document.getElementById("carta");
+const corazon = document.querySelector(".corazon");
 
-<section id="inicio" class="pantalla">
+corazon.addEventListener("click", abrir);
 
-  <div class="estrellas"></div>
+function abrir(){
 
-  <div class="escena">
+inicio.style.opacity="0";
+inicio.style.transform="scale(.8)";
 
-    <div class="orbita">
+setTimeout(()=>{
 
-      <span class="h c1">♥</span>
-      <span class="h c2">♥</span>
-      <span class="h c3">♥</span>
-      <span class="h c4">♥</span>
-      <span class="h c5">♥</span>
-      <span class="h c6">♥</span>
-      <span class="h c7">♥</span>
-      <span class="h c8">♥</span>
-      <span class="h c9">♥</span>
-      <span class="h c10">♥</span>
-      <span class="h c11">♥</span>
-      <span class="h c12">♥</span>
-      <span class="h c13">♥</span>
-      <span class="h c14">♥</span>
-      <span class="h c15">♥</span>
-      <span class="h c16">♥</span>
+inicio.classList.add("oculto");
 
-    </div>
+carta.classList.remove("oculto");
 
-    <div class="corazon">
+},900);
 
-      <div class="texto">
-
-        <h1>Juan Sebastian López</h1>
-
-        <p>
-          Con mucho amor<br>
-          y cariño para ti
-        </p>
-
-        <div class="diamante">💎</div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <p class="tocar">Toca el corazón ❤️</p>
-
-</section>
-
-
-<section id="carta" class="pantalla oculto">
-
-  <div class="carta">
-
-    <div class="mini">❤️</div>
-
-    <h2>Para ti</h2>
-
-    <div class="linea"></div>
-
-    <p>
-      Si el sol pudiera hablar,
-      le pediría que pronunciara tu nombre
-      cada mañana para iluminar mi mundo.
-    </p>
-
-    <p>
-      Si la luna pudiera abrazarte,
-      llenaría tus noches de paz
-      y de sueños tan hermosos como tu sonrisa.
-    </p>
-
-    <p>
-      Y si cada estrella del cielo
-      representara un instante contigo,
-      entonces el universo entero
-      brillaría eternamente.
-    </p>
-
-    <p class="final">
-      Porque mi lugar favorito
-      siempre será donde estés tú. ❤️
-    </p>
-
-    <div class="firma">
-      A.T.T.<br>
-      <b>Juan Sebastian López 💎</b>
-    </div>
-
-  </div>
-
-</section>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+}
