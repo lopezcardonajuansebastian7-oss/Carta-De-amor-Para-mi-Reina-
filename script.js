@@ -2,19 +2,102 @@ const inicio = document.getElementById("inicio");
 const carta = document.getElementById("carta");
 const corazon = document.querySelector(".corazon");
 
-corazon.addEventListener("click", abrir);
+let abierto = false;
 
-function abrir(){
 
-inicio.style.opacity="0";
-inicio.style.transform="scale(.8)";
+/* =====================================
+   ABRIR CARTA
+===================================== */
 
-setTimeout(()=>{
+function abrirCarta() {
 
-inicio.classList.add("oculto");
+    if (abierto) {
+        return;
+    }
 
-carta.classList.remove("oculto");
+    abierto = true;
 
-},900);
+
+    /* El corazón crece */
+
+    corazon.style.animation =
+        "latido 0.5s infinite";
+
+
+    /* Desaparece la primera pantalla */
+
+    setTimeout(() => {
+
+        inicio.style.opacity = "0";
+
+        inicio.style.transform =
+            "scale(0.7)";
+
+    }, 300);
+
+
+    /* Aparece la carta */
+
+    setTimeout(() => {
+
+        inicio.classList.add("oculto");
+
+        carta.classList.remove("oculto");
+
+        carta.style.opacity = "1";
+
+        carta.style.transform =
+            "scale(1)";
+
+    }, 1300);
 
 }
+
+
+/* =====================================
+   TOCAR CORAZÓN
+===================================== */
+
+corazon.addEventListener(
+    "click",
+    abrirCarta
+);
+
+
+/* =====================================
+   TOCAR PANTALLA
+===================================== */
+
+inicio.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === inicio ||
+            event.target.classList.contains("tocar")
+        ) {
+
+            abrirCarta();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   ENTER
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            abrirCarta();
+
+        }
+
+    }
+);
