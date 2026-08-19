@@ -1,54 +1,20 @@
 const inicio = document.getElementById("inicio");
 const carta = document.getElementById("carta");
+const corazon = document.querySelector(".corazon");
 
-let abierto = false;
+corazon.addEventListener("click", abrir);
 
+function abrir(){
 
-/* =================================
-   ABRIR CARTA
-================================= */
+inicio.style.opacity="0";
+inicio.style.transform="scale(.8)";
 
-function abrirCarta() {
+setTimeout(()=>{
 
-    if (abierto) return;
+inicio.classList.add("oculto");
 
-    abierto = true;
+carta.classList.remove("oculto");
 
-    inicio.style.opacity = "0";
-    inicio.style.transform = "scale(0.75)";
+},900);
 
-    setTimeout(() => {
-
-        inicio.classList.add("oculto");
-
-        carta.classList.remove("oculto");
-
-        setTimeout(() => {
-
-            carta.style.opacity = "1";
-            carta.style.transform = "scale(1)";
-
-        }, 100);
-
-    }, 1200);
 }
-
-
-/* =================================
-   TOCAR LA PANTALLA
-================================= */
-
-inicio.addEventListener("click", abrirCarta);
-
-
-/* =================================
-   TAMBIÉN SE PUEDE ABRIR CON ENTER
-================================= */
-
-document.addEventListener("keydown", function(event) {
-
-    if (event.key === "Enter") {
-        abrirCarta();
-    }
-
-});
